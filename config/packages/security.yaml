@@ -1,5 +1,6 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
     providers:
         in_memory:
             memory:
@@ -11,14 +12,20 @@ security:
                         password: pepe1234
                         roles: 'ROLE_USER'
     firewalls:
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         main:
             anonymous: true
             form_login:
                 login_path: login
                 check_path: login
+
+            logout:
+                path:   /logout
+                target: /
             # activate different ways to authenticate
 
             # http_basic: true

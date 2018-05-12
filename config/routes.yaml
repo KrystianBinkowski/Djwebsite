@@ -7,3 +7,5 @@ admin:
 login:
     path: /admin/login
     controller: App\Controller\AdminController::login
+logout:
+    path: /logout
