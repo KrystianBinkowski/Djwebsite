@@ -6,4 +6,4 @@ admin:
     controller: App\Controller\AdminController::index
 login:
     path: /admin/login
-    controller: App\Controller\AdminController::index
+    controller: App\Controller\AdminController::login
