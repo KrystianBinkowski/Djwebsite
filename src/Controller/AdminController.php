@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 class AdminController extends Controller
 {
     /**
@@ -18,12 +19,19 @@ class AdminController extends Controller
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('admin/index.html.twig', array(
+        return $this->render('admin/login.html.twig', array(
             'controller_name' => 'AdminController',
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ));
+}
+        public function admin()
+    {
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController',
+        ]);
     }
+
 
 
 }

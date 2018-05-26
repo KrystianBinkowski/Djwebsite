@@ -1,25 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <link href="{{ asset('full-slider.css') }}" rel="stylesheet">
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/y96hDWck4qITe" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/travolta-y96hDWck4qITe"></a></p>
+    <h1></h1>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
+    <a href="{{ path('logout') }}"><button type="submit">Logout</button></a>
+    <ul>
 
-        {#
-            If you want to control the URL the user
-            is redirected to on success (more details below)
-            <input type="hidden" name="_target_path" value="/account" />
-        #}
-
-        <button type="submit">login</button>
-    </form>
+    </ul>
+</div>
 {% endblock %}

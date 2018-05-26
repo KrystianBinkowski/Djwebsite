@@ -3,7 +3,7 @@ index:
     controller: App\Controller\DefaultController::index
 admin:
     path: /admin
-    controller: App\Controller\AdminController::index
+    controller: App\Controller\AdminController::admin
 login:
     path: /admin/login
     controller: App\Controller\AdminController::login
