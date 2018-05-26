@@ -26,6 +26,11 @@ class DjSetEntity
      */
     private $link;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $SoundCloudId;
+
     public function getId()
     {
         return $this->id;
@@ -51,6 +56,18 @@ class DjSetEntity
     public function setLink(string $link): self
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function getSoundCloudId(): ?int
+    {
+        return $this->SoundCloudId;
+    }
+
+    public function setSoundCloudId(int $SoundCloudId): self
+    {
+        $this->SoundCloudId = $SoundCloudId;
 
         return $this;
     }

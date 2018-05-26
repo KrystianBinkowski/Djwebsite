@@ -1,13 +1,71 @@
 <?php
 
 namespace App\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Entity\DjSetEntity;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class AdminController extends Controller
 {
+    public function add(Request $request)
+    {
+        $DjSetEntity = new DjSetEntity();
+     
+
+        $form = $this->createFormBuilder($DjSetEntity)
+            ->add('link', TextType::class)
+            ->add('title', TextType::class)
+            ->add('SoundCloudId', IntegerType::class)
+
+            ->add('save', SubmitType::class, array('label' => 'Create Task'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $task = $form->getData();
+        
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+        
+            return $this->redirectToRoute('admin');
+        }
+       
+
+        return $this->render('admin/add.html.twig', [
+        'form' => $form->createView(),
+        'controller_name' => 'AdminController',
+        
+        
+        ]);
+    }
+    public function delete()
+    {
+        $DjSet = $this
+        ->getDoctrine()
+        ->getRepository(DjSetEntity::class)
+        ->findId();
+        $entityManager->remove($product);
+        $entityManager->flush();
+        dump($DjSet);
+        return $this->render('admin/delete.html.twig', [
+            
+            'controller_name' => 'AdminController',
+            
+            
+            ]);
+    }
     /**
      * @Route("/admin", name="admin")
      */
@@ -24,16 +82,17 @@ class AdminController extends Controller
             'last_username' => $lastUsername,
             'error' => $error,
         ));
-}
-        public function admin()
+    }
+    public function admin()
     {
+        $DjSet = $this->getDoctrine()
+        ->getRepository(DjSetEntity::class)
+        ->findAll();
+        dump($DjSet);
+        
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
+            'DjSet' => $DjSet,
         ]);
     }
-
-
-
 }
-
-

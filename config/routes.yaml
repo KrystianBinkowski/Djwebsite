@@ -9,3 +9,9 @@ login:
     controller: App\Controller\AdminController::login
 logout:
     path: /logout
+addSet:
+    path: /admin/add
+    controller: App\Controller\AdminController::add
+deleteSet:
+    path: /admin/delete/{id}
+    controller: App\Controller\AdminController::delete
