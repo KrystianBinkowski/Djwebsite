@@ -60,9 +60,11 @@ class AdminController extends Controller
         $entityManager->remove($DjSet);
         $entityManager->flush();
         dump($DjSet);
+        return $this->redirectToRoute('admin');
         return $this->render('admin/delete.html.twig', [
             
             'controller_name' => 'AdminController',
+            
             
             
             ]);
