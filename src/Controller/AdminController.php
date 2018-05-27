@@ -50,13 +50,14 @@ class AdminController extends Controller
         
         ]);
     }
-    public function delete()
+    public function delete(int $id)
     {
         $DjSet = $this
         ->getDoctrine()
         ->getRepository(DjSetEntity::class)
-        ->findId();
-        $entityManager->remove($product);
+        ->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($DjSet);
         $entityManager->flush();
         dump($DjSet);
         return $this->render('admin/delete.html.twig', [
