@@ -22,7 +22,6 @@ class AdminController extends Controller
             ->add('link', TextType::class)
             ->add('title', TextType::class)
             ->add('SoundCloudId', IntegerType::class)
-
             ->add('save', SubmitType::class, array('label' => 'Create Task'))
             ->getForm();
 
@@ -44,7 +43,7 @@ class AdminController extends Controller
        
 
         return $this->render('admin/add.html.twig', [
-        'form' => $form->createView(),
+       'form' => $form->createView(),
         'controller_name' => 'AdminController',
         
         
@@ -68,6 +67,52 @@ class AdminController extends Controller
             
             
             ]);
+    }
+    public function update($id,Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $DjSetEntity = $entityManager->getRepository(DjSetEntity::class)->find($id);
+    
+    
+    
+   
+        if (!$DjSetEntity) {
+            throw $this->createNotFoundException(
+            'No product found for id '.$id
+        );
+        }
+        $form = $this->createFormBuilder($DjSetEntity)
+            ->add('link', TextType::class)
+            ->add('title', TextType::class)
+            ->add('SoundCloudId', IntegerType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Task'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $task = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin');
+        }
+   
+    
+        return $this->render('admin/update.html.twig', [
+            
+        'controller_name' => 'AdminController',
+        'form' => $form->createView(),
+        
+        
+        
+        ]);
     }
     /**
      * @Route("/admin", name="admin")
