@@ -68,7 +68,7 @@ class AdminController extends Controller
             
             ]);
     }
-    public function update($id,Request $request)
+    public function update($id, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $DjSetEntity = $entityManager->getRepository(DjSetEntity::class)->find($id);
@@ -136,7 +136,7 @@ class AdminController extends Controller
         $DjSet = $this->getDoctrine()
         ->getRepository(DjSetEntity::class)
         ->findAll();
-        dump($DjSet);
+        
         
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',

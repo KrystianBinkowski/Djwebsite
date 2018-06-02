@@ -17,4 +17,13 @@ deleteSet:
     controller: App\Controller\AdminController::delete
 updateSet:
     path: /admin/update/{id}
-    controller: App\Controller\AdminController::update    
+    controller: App\Controller\AdminController::update
+about:
+    path: /about
+    controller: App\Controller\AboutController::about
+gigs:
+    path: /gigs
+    controller: App\Controller\GigsController::gigs
+contact:
+    path: /contact
+    controller: App\Controller\ContactController::contact
