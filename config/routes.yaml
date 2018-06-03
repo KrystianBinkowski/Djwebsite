@@ -27,3 +27,6 @@ gigs:
 contact:
     path: /contact
     controller: App\Controller\ContactController::contact
+facebook:
+    resource: App\Controller\FacebookController
+    type: annotation
