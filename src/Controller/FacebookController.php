@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -48,7 +49,8 @@ class FacebookController extends Controller
         } catch (IdentityProviderException $e) {
             // something went wrong!
             // probably you should return the reason to the user
-            var_dump($e->getMessage());die;
+            var_dump($e->getMessage());
+            die;
         }
     }
 }

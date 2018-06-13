@@ -16,7 +16,7 @@ class DefaultController extends Controller
         $DjSet = $this->getDoctrine()
         ->getRepository(DjSetEntity::class)
         ->findAll();
-        dump($DjSet);
+        
         
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',

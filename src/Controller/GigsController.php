@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\DjSetEntity;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,7 +17,7 @@ class GigsController extends Controller
             $DjSet = $this->getDoctrine()
             ->getRepository(DjSetEntity::class)
             ->findAll();
-            dump($DjSet);
+            
             
             return $this->render('gigs/index.html.twig', [
                 'controller_name' => 'GigsController',
@@ -24,5 +25,4 @@ class GigsController extends Controller
             ]);
         }
     }
-    
 }
