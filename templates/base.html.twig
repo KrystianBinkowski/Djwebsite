@@ -26,8 +26,12 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+
     <div class="container">
-      <a class="navbar-brand" href="#">Welcome to the Czortez site !</a>
+
+
+      <a class="navbar-brand" href="{{ path('index') }}">Welcome to the Czortez site !</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -56,10 +60,14 @@
   <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" {% if activePage is defined and activePage=='index' %} class="active"
+          {% endif %}></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1" {% if activePage is defined and activePage=='about' %} class="active"
+          {% endif %}></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2" {% if activePage is defined and activePage=='gigs' %} class="active"
+          {% endif %}></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3" {% if activePage is defined and activePage=='contact' %} class="active"
+          {% endif %}></li>
       </ol>
       <div class="carousel-inner" role="listbox">
 
@@ -68,11 +76,11 @@
         <!-- Slide One - Set the background image for this slide in the line below -->
 
 
-        <div class="carousel-item active" style="background-image: url('http://awesomefantasticfour.weebly.com/uploads/2/2/6/5/22652422/s125128719810410675_p4_i1_w1900.jpeg')">
-          <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-item {% if  activePage is defined and  activePage == 'index' %} active {% endif %}" style="background-image: url('https://imageshack.com/a/img923/2228/glDtfr.jpg')">
+          <div class="carousel-caption ">
             <p>
-              {% block player %} This is a template for a simple marketing or informational website. It includes a large callout called a
-              jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+              {% block player %} This is a template for a simple marketing or informational website. It includes a large callout called
+              a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
               {% endblock %}
             </p>
 
@@ -82,39 +90,56 @@
         </div>
 
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://www.thehideoutva.com/images/banner.jpg')">
-          <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-item {% if  activePage is defined and  activePage == 'about' %} active {% endif %}" style="background-image: url('https://imageshack.com/a/img922/7098/bXI6bn.jpg')">
+          <div class="carousel-caption ">
             <h3>About</h3>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vehicula magna sed dui iaculis ullamcorper. Mauris
-              cursus hendrerit tortor a dictum. Suspendisse potenti. Aliquam vel lectus eros. Aliquam nulla ligula, feugiat
-              non nisi at, ultrices vulputate ipsum. Maecenas auctor dolor tellus, eget laoreet dolor vestibulum aliquet.
-              Curabitur fringilla, ex vitae efficitur malesuada, tellus odio sollicitudin magna, sit amet ultrices dolor
-              mauris sed nibh. Etiam congue enim eu nibh luctus blandit. Ut auctor est et augue rutrum, nec varius dolor
-              ultricies. Sed gravida leo pretium purus semper, ac blandit leo semper. Pellentesque congue ex ac augue sodales
-              tristique. Maecenas eu tempor enim. Aenean et posuere justo. Aenean porta scelerisque odio, accumsan mollis
-              sapien congue congue. In pretium tellus eu erat volutpat viverra. Nulla bibendum gravida erat convallis laoreet.
-              Sed gravida tincidunt leo, non ultricies mi viverra et. Duis metus libero, commodo vitae luctus sit amet, pellentesque
-              sit amet elit. Duis mauris mi, lacinia vitae venenatis at, pretium cursus libero. Praesent eget bibendum felis.
-              Phasellus et metus nisi. </p>
+            <p>
+              <h1>Czortez sounds and tastes different everytime, but It's always made to make u feel better - to restore your
+                energy and high spirits. Enjoy:)</h1>
+            </p>
           </div>
         </div>
 
 
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://www.fiestatenerife.com/objects_pictures/objects/table/8NqTqi0pebRu9egdSJUi-3083774862.jpg')">
-          <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-item {% if  activePage is defined and  activePage == 'gigs' %} active {% endif %}" style="background-image: url('https://imageshack.com/a/img922/7098/bXI6bn.jpg')">
+          <div class="carousel-caption ">
             <h3>Gigs</h3>
-            <p>This is a description for the third slide.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc accumsan tortor lorem, nec iaculis ipsum sollicitudin
+              quis. Quisque congue tincidunt finibus. Fusce quis vulputate nulla. Etiam nisi justo, efficitur non viverra
+              non, facilisis vitae justo. Nullam elementum sem eros, a luctus mauris efficitur id. Integer massa ante, facilisis
+              quis viverra sed, vehicula quis magna. Phasellus at elementum lorem. Fusce sit amet diam sit amet urna vulputate
+              congue. Phasellus posuere tempus lectus ut ultricies. Duis placerat libero non orci volutpat, quis ornare justo
+              egestas. Donec maximus tortor ac elit facilisis, non interdum magna blandit. Aliquam in blandit eros. Sed erat
+              justo, tristique mattis ligula a, tincidunt aliquam erat. Praesent consectetur eros nisl, sit amet elementum
+              nunc laoreet sed. Suspendisse potenti. Sed blandit massa at convallis dictum. Donec ornare lorem id convallis
+              porttitor. Maecenas eros ligula, molestie vitae tempus eget, mattis suscipit dui. Curabitur sem lorem, viverra
+              eu vestibulum eget, elementum egestas nulla. Quisque dignissim turpis vel purus mollis pretium. Donec aliquam
+              tincidunt diam, eu tincidunt tellus gravida in. Nunc at finibus metus. Ut ultrices tristique leo vel mattis.
+              Cras vulputate nunc in risus dictum, at pharetra risus lobortis. Vivamus at nulla eget est suscipit vestibulum
+              sit amet varius ipsum. Nulla vulputate eget odio nec maximus. Morbi laoreet eros ut suscipit lobortis. Aliquam
+              tellus massa, egestas et odio ut, mattis malesuada libero. Maecenas consequat scelerisque odio, non semper
+              magna tempus vel. Suspendisse at diam vitae sapien tristique vehicula ac vitae mauris. Duis at risus facilisis,
+              vulputate magna sit amet, maximus massa. Sed sed erat vel odio finibus vulputate vitae a massa. Nulla enim
+              dolor, porttitor id aliquam ut, ullamcorper nec ante. Praesent tincidunt consectetur eros non pretium. In eu
+              laoreet lorem, et cursus eros. Fusce non ex sed diam vestibulum aliquam. Nulla eu sem viverra, iaculis nibh
+              eget, placerat nulla. Mauris commodo molestie dui semper pulvinar. Fusce tempus turpis enim, nec ultricies
+              est viverra ut. In ultricies erat ut tristique commodo. Sed id ex at elit rhoncus vehicula. Praesent at maximus
+              lacus. Donec a ipsum nec sem sollicitudin ultrices quis et tellus. Phasellus gravida lectus sed ultrices aliquet.
+              Phasellus justo velit, ultricies eget pellentesque at, facilisis ac odio. Ut non lectus auctor, iaculis lacus
+              vitae, rhoncus magna. .</p>
           </div>
         </div>
 
 
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://www.fiestatenerife.com/objects_pictures/objects/table/8NqTqi0pebRu9egdSJUi-3083774862.jpg')">
-          <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-item {% if  activePage is defined and  activePage == 'contact' %} active {% endif %}" style="background-image: url('https://imageshack.com/a/img923/623/gKlnQu.jpg')">
+          <div class="carousel-caption ">
 
             <h3>Contact</h3>
-            <p>This is a description for the third slide.</p>
+            <p>
+              <h2><a href="mailto:booking@czortez.pl?cc=booking@czortez.pl">booking@czortez.pl</a></h2>
+            </p>
           </div>
         </div>
 
@@ -124,7 +149,7 @@
 
 
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="carousel-control-prev-icon {% if  activePage is defined and  activePage == 'about' %} active {% endif %}" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
 
@@ -137,14 +162,12 @@
   </header>
 
   <!-- Page Content -->
-  <section class="py-5" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT68hgSth77L8DCJjw4Ss2uASjkqTiqc1PXdJZ0iX7SbFvXagAw')">
+  <section class="py-5" style="background-image: url('https://images.urbanoutfitters.com/is/image/UrbanOutfitters/39686613_001_s')">
     <div class="container">
       <h1></h1>
 
       <p>
-        {% block body %} This is a template for a simple marketing or informational website. It includes a large callout called a
-        jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique. {%
-        endblock %}
+        {% block body %} {% endblock %}
       </p>
 
 

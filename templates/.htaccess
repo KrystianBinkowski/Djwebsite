@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /
+​
+RewriteRule ^$ public/index.php [QSA,L]
+RewriteRule ^(.*)$ public/index.php [QSA,L]
